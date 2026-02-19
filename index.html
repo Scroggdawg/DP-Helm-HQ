@@ -1,8 +1,10 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DP Helm HQ</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=IBM+Plex+Mono:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -502,12 +504,16 @@ label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t
 <body>
 
 <!-- PASSWORD GATE -->
-<div id="pw-gate" style="position: fixed; inset: 0px; background: rgb(10, 10, 10); z-index: 9999; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 0px; transition: opacity 0.4s; opacity: 0;">
+<div id="pw-gate" style="position:fixed;inset:0;background:#0a0a0a;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0">
   <div style="text-align:center;max-width:360px;width:90%">
     <div style="font-family:'DM Serif Display',Georgia,serif;font-size:28px;color:#c9a84c;margin-bottom:6px;letter-spacing:1px">DP Helm HQ</div>
     <div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-bottom:40px">Guitar + Animator POC</div>
-    <input id="pw-input" type="password" placeholder="Password" style="width:100%;background:#111;border:1px solid #333;color:#e8e8e8;font-family:monospace;font-size:14px;padding:12px 16px;outline:none;box-sizing:border-box;letter-spacing:2px;margin-bottom:10px" onkeydown="if(event.key==='Enter') checkPassword()">
-    <button onclick="checkPassword()" style="width:100%;background:transparent;border:1px solid #c9a84c;color:#c9a84c;font-family:monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:11px;cursor:pointer;transition:all .15s" onmouseover="this.style.background='rgba(201,168,76,.1)'" onmouseout="this.style.background='transparent'">
+    <input id="pw-input" type="password" placeholder="Password" 
+      style="width:100%;background:#111;border:1px solid #333;color:#e8e8e8;font-family:monospace;font-size:14px;padding:12px 16px;outline:none;box-sizing:border-box;letter-spacing:2px;margin-bottom:10px"
+      onkeydown="if(event.key==='Enter') checkPassword()">
+    <button onclick="checkPassword()" 
+      style="width:100%;background:transparent;border:1px solid #c9a84c;color:#c9a84c;font-family:monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:11px;cursor:pointer;transition:all .15s"
+      onmouseover="this.style.background='rgba(201,168,76,.1)'" onmouseout="this.style.background='transparent'">
       Unlock →
     </button>
     <div id="pw-error" style="color:#cc4444;font-size:10px;letter-spacing:1px;margin-top:10px;height:16px"></div>
@@ -604,7 +610,7 @@ function checkPassword(){
       <button class="contact-act-btn danger" onclick="removeContactCard()">Remove</button>
     </div>
   </div>
-
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="this.classList.remove('show')">
@@ -631,9 +637,9 @@ function checkPassword(){
   <span class="topbar-sep">|</span>
   <span class="topbar-project">Guitar + Animator POC</span>
   <div class="topbar-right">
-    <button onclick="downloadApp()" style="background: none; border-top-width: ; border-right-width: ; border-bottom-width: ; border-left-width: ; border-top-style: ; border-right-style: ; border-bottom-style: ; border-left-style: ; border-color: var(--gold2); border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; color: var(--gold); font-family: var(--font-m); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; cursor: pointer; transition: 0.15s;" onmouseover="this.style.borderColor='var(--gold2)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'" title="Download this file">↓ Download</button>
+    <button onclick="downloadApp()" style="background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:var(--font-m);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--gold2)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'" title="Download this file">↓ Download</button>
     <span class="badge" style="border-color:var(--border2);color:var(--text3)">Shoot: Feb 27</span>
-    <span class="badge live" id="topbar-daysout">8 days</span>
+    <span class="badge live" id="topbar-daysout">— days</span>
     <span class="badge warn" id="topbar-flag1">1st AC Open</span>
     <span class="badge warn" id="topbar-flag2">Steadicam Op Open</span>
     <span class="badge live">AI Live</span>
@@ -664,9 +670,9 @@ function checkPassword(){
   <div class="nav-item" onclick="showPanel('settings',this)"><span class="nav-icon">◎</span> API Keys</div>
   <div class="nav-label">Stats</div>
   <div class="project-stat"><div class="project-stat-label">Shoot Date</div><div class="project-stat-val">Feb 27</div></div>
-  <div class="project-stat"><div class="project-stat-label">Days Out</div><div class="project-stat-val" id="days-out">8</div></div>
+  <div class="project-stat"><div class="project-stat-label">Days Out</div><div class="project-stat-val" id="days-out">—</div></div>
   <div class="project-stat"><div class="project-stat-label">Crew Locked</div><div class="project-stat-val">1/4</div></div>
-  <div class="project-stat"><div class="project-stat-label">Prep</div><div class="project-stat-val" id="checklist-pct">3%</div></div>
+  <div class="project-stat"><div class="project-stat-label">Prep</div><div class="project-stat-val" id="checklist-pct">0%</div></div>
 </div>
 
 <!-- MAIN -->
@@ -679,19 +685,19 @@ function checkPassword(){
 
   <div class="grid3" style="margin-bottom:14px">
     <div class="card ov-clickable" onclick="showPanel('schedule',document.querySelector('.nav-item[onclick*=schedule]'))" title="Go to Schedule">
-      <div class="card-title">Shoot Date</div><div class="card-val" style="font-size:18px">Feb 27</div><div class="card-sub" id="ov-daysout">8 days out</div>
+      <div class="card-title">Shoot Date</div><div class="card-val" style="font-size:18px">Feb 27</div><div class="card-sub" id="ov-daysout">— days out</div>
       <div class="ov-link-hint">→ Schedule</div>
     </div>
     <div class="card ov-clickable" onclick="showPanel('crew',document.querySelector('.nav-item[onclick*=crew]'))" title="Go to Crew">
-      <div class="card-title">Crew Locked</div><div class="card-val" id="ov-crew">1 / 11 hired</div><div class="card-sub" id="ov-crew-sub" style="color: var(--red);">10 roles open</div>
+      <div class="card-title">Crew Locked</div><div class="card-val" id="ov-crew">— hired</div><div class="card-sub" id="ov-crew-sub">Loading…</div>
       <div class="ov-link-hint">→ Crew</div>
     </div>
     <div class="card ov-clickable" onclick="showPanel('checklist',document.querySelector('.nav-item[onclick*=checklist]'))" title="Go to Checklist">
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
-        <div class="rag yellow" id="ov-prep-rag"></div>
+        <div class="rag red" id="ov-prep-rag"></div>
         <div class="card-title" style="margin:0">Prep Complete</div>
       </div>
-      <div class="card-val" id="ov-prep">3%</div><div class="card-sub">Checklist progress</div>
+      <div class="card-val" id="ov-prep">—%</div><div class="card-sub">Checklist progress</div>
       <div class="ov-link-hint">→ Checklist</div>
     </div>
   </div>
@@ -712,124 +718,22 @@ function checkPassword(){
   </div>
 
   <div class="section-title" style="margin-top:0">Active Flags</div>
-  <div class="impact-box" id="ov-flags" style="margin-bottom:14px;min-height:40px"><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex: 1 1 0%; font-size: 11px; line-height: 1.6; opacity: 1;">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🔴 1st AC open — Tate unavailable, replacement needed
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🔴 Steadicam operator not locked — critical path V1
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🔴 Camera Operator — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🔴 2nd AC — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex: 1 1 0%; font-size: 11px; line-height: 1.6; opacity: 1;">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🔴 Utility — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:var(--gold2);flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-right:5px">Electric</span>
-        🔴 Gaffer — no one hired for this project
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:var(--gold2);flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-right:5px">Electric</span>
-        🔴 Best Boy Electric — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:var(--gold2);flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-right:5px">Electric</span>
-        🔴 Juicer — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#888;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#888;margin-right:5px">Grip</span>
-        🔴 Key Grip — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#888;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#888;margin-right:5px">Grip</span>
-        🔴 Best Boy Grip — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#888;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#888;margin-right:5px">Grip</span>
-        🔴 Grip — no one hired
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4acccc;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4acccc;margin-right:5px">Location</span>
-        🔴 INT. ANIMATOR'S STUDIO location TBD
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#b47fcc;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#b47fcc;margin-right:5px">Vendor</span>
-        🔴 COI not submitted to Lightstone Rentals
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🟡 Diopter + Mercury compatibility — test before lock
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🟡 Animation codec TBC — ProRes 4444 or RAW?
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4a9eff;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4a9eff;margin-right:5px">Camera</span>
-        🟡 Daniel Elder email not yet captured
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:var(--gold2);flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold2);margin-right:5px">Electric</span>
-        🟡 Nanlux 2400 on 20A circuit — confirm or swap
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div><div style="display: flex; align-items: flex-start; gap: 0px; margin-bottom: 6px; cursor: pointer;">
-      <div style="width:3px;align-self:stretch;background:#4acccc;flex-shrink:0;margin-right:8px;border-radius:1px"></div>
-      <div style="flex:1;font-size:11px;line-height:1.6">
-        <span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#4acccc;margin-right:5px">Schedule</span>
-        🟡 V2 time of day TBD — affects window control + lighting
-        <span style="font-size:9px;color:var(--text3);margin-left:5px">→</span>
-      </div></div></div>
+  <div class="impact-box" id="ov-flags" style="margin-bottom:14px;min-height:40px"></div>
 
   <div class="section-title">Crew — Confirmed</div>
-  <div id="ov-crew-camera" style="margin-bottom:8px"><div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px">📷 Camera</div><div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;"><div class="crew-card-v3 is-hired" style="cursor: pointer;"><div class="crew-card-v3-role">DIT</div><div class="crew-card-v3-name" style="cursor:pointer">Daniel Elder</div><div style="font-size:9px;color:var(--text3)">$400/day</div></div></div></div>
+  <div id="ov-crew-camera" style="margin-bottom:8px"></div>
   <div id="ov-crew-electric" style="margin-bottom:8px"></div>
   <div id="ov-crew-grip" style="margin-bottom:8px"></div>
   <div id="ov-crew-open-flags" style="margin-top:2px;margin-bottom:4px"></div>
 
   <div class="section-title">Vendors</div>
-  <div id="ov-vendors" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px"><div class="crew-card-v3 is-available" style="width: auto; min-width: 130px; cursor: pointer;"><div class="crew-card-v3-role">Vendor</div><div class="crew-card-v3-name" style="cursor:pointer">Lightstone Rentals</div><div style="font-size:9px;color:var(--text3)">Ryan Beardsley</div><span style="color:var(--red);font-size:9px">COI needed</span></div></div>
+  <div id="ov-vendors" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+    <div class="crew-card-v3 is-available" style="width:auto;min-width:130px">
+      <div class="crew-card-v3-role">Rental House</div>
+      <div class="crew-card-v3-name" style="cursor:default">Lightstone Rentals</div>
+      <div style="font-size:9px;color:var(--text3);margin-top:3px">Ryan Beardsley</div>
+    </div>
+  </div>
   <div class="page-instructions"><div class="page-instructions-toggle" onclick="toggleInstructions(this)"><span class="pi-chevron">›</span><span class="pi-label">How to use this page</span></div><div class="pi-body"><div class="pi-row"><div class="pi-key">Stats row</div><div class="pi-val">Three clickable cards: <strong>Shoot Date</strong> links to Schedule, <strong>Crew Locked</strong> links to Crew, <strong>Prep Complete</strong> links to Checklist. The RAG dot on Prep Complete turns red/yellow/green based on checklist progress — it updates live every time you check something off.</div></div><div class="pi-row"><div class="pi-key">Active Flags</div><div class="pi-val">Every flag is a live checklist item or crew slot. <strong>Red</strong> = blocked or missing. <strong>Yellow</strong> = open question. Click any flag with a → arrow to jump directly to the source — it navigates to the right panel, opens the right group, and pulses the item in gold for 5 seconds so you can't miss it. Flags disappear when you check off the linked item or hire the open role.</div></div><div class="pi-row"><div class="pi-key">Two scenes</div><div class="pi-val">Click either scene card to jump to its full detail panel — shot list, lighting notes, lens choices. The Genesis card links to Genesis Scene, Performance to Performance Scene.</div></div><div class="pi-row"><div class="pi-key">Crew section</div><div class="pi-val">Live mirror of hired crew, grouped by department. Click any card to open their full contact card.</div></div><div class="pi-row"><div class="pi-key">Vendors section</div><div class="pi-val">COI status for each vendor at a glance. Click a card to jump to the Vendors panel.</div></div><div class="pi-row"><div class="pi-key">AI command bar</div><div class="pi-val">At the bottom of every page. Type any update in plain language — "Tate is available after all, add him as 1st AC at $250/day" — and it proposes changes for your review before committing. Committed changes log automatically to the Decision Log.</div></div></div></div>
 </div>
 
@@ -839,102 +743,7 @@ function checkPassword(){
   <div class="panel-sub">Feb 17 → Shoot Feb 27 · Scout Feb 25 · Returns Mar 2</div>
 
   <div class="timeline-wrap">
-    <div class="timeline" id="timeline-root"><div class="tl-day today" data-date="Feb 17"><div class="tl-day-header"><div class="tl-date">Feb 17</div><div class="tl-label">Today</div></div><div class="tl-items" data-date="Feb 17"><div class="tl-item action urgent" data-id="s1a" data-date="Feb 17" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s1a','Feb 17')">Find 1st AC replacement</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s1a','Feb 17')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s1a','Feb 17')" title="Remove">✕</button>
-    </div></div><div class="tl-item action urgent" data-id="s1b" data-date="Feb 17" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s1b','Feb 17')">Contact Ryan @ Lightstone</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s1b','Feb 17')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s1b','Feb 17')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s1c" data-date="Feb 17" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s1c','Feb 17')">Confirm Steadicam op search</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s1c','Feb 17')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s1c','Feb 17')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 18"><div class="tl-day-header"><div class="tl-date">Feb 18</div><div class="tl-label">Tue</div></div><div class="tl-items" data-date="Feb 18"><div class="tl-item action" data-id="s2a" data-date="Feb 18" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s2a','Feb 18')">Follow up Lightstone quote</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s2a','Feb 18')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s2a','Feb 18')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s2b" data-date="Feb 18" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s2b','Feb 18')">Send COI request to broker</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s2b','Feb 18')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s2b','Feb 18')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 19"><div class="tl-day-header"><div class="tl-date">Feb 19</div><div class="tl-label">Wed</div></div><div class="tl-items" data-date="Feb 19"><div class="tl-item action" data-id="s3a" data-date="Feb 19" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s3a','Feb 19')">Lock 1st AC</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s3a','Feb 19')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s3a','Feb 19')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s3b" data-date="Feb 19" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s3b','Feb 19')">COI to Lightstone</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s3b','Feb 19')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s3b','Feb 19')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 20"><div class="tl-day-header"><div class="tl-date">Feb 20</div><div class="tl-label">Thu</div></div><div class="tl-items" data-date="Feb 20"><div class="tl-item action" data-id="s4a" data-date="Feb 20" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s4a','Feb 20')">Confirm Steadicam op</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s4a','Feb 20')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s4a','Feb 20')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s4b" data-date="Feb 20" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s4b','Feb 20')">Diopter/Mercury test</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s4b','Feb 20')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s4b','Feb 20')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 21"><div class="tl-day-header"><div class="tl-date">Feb 21</div><div class="tl-label">Fri</div></div><div class="tl-items" data-date="Feb 21"><div class="tl-item action" data-id="s5a" data-date="Feb 21" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s5a','Feb 21')">Codec confirm w/ animator</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s5a','Feb 21')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s5a','Feb 21')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 22"><div class="tl-day-header"><div class="tl-date">Feb 22</div><div class="tl-label">Sat</div></div><div class="tl-items" data-date="Feb 22"><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 23"><div class="tl-day-header"><div class="tl-date">Feb 23</div><div class="tl-label">Sun</div></div><div class="tl-items" data-date="Feb 23"><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 24"><div class="tl-day-header"><div class="tl-date">Feb 24</div><div class="tl-label">Mon</div></div><div class="tl-items" data-date="Feb 24"><div class="tl-item action" data-id="s8a" data-date="Feb 24" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s8a','Feb 24')">Rental order signed</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s8a','Feb 24')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s8a','Feb 24')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s8b" data-date="Feb 24" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s8b','Feb 24')">Call sheet draft</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s8b','Feb 24')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s8b','Feb 24')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day scout" data-date="Feb 25"><div class="tl-day-header"><div class="tl-date">Feb 25</div><div class="tl-label">Scout</div></div><div class="tl-items" data-date="Feb 25"><div class="tl-item action" data-id="s9a" data-date="Feb 25" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s9a','Feb 25')">Tech scout — V1 backyard</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s9a','Feb 25')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s9a','Feb 25')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s9b" data-date="Feb 25" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s9b','Feb 25')">Tech scout — V2 studio (if locked)</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s9b','Feb 25')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s9b','Feb 25')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s9c" data-date="Feb 25" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s9c','Feb 25')">Confirm 20A circuit V1</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s9c','Feb 25')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s9c','Feb 25')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day" data-date="Feb 26"><div class="tl-day-header"><div class="tl-date">Feb 26</div><div class="tl-label">Tue</div></div><div class="tl-items" data-date="Feb 26"><div class="tl-item action" data-id="s10a" data-date="Feb 26" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s10a','Feb 26')">Call sheet distribute</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s10a','Feb 26')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s10a','Feb 26')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s10b" data-date="Feb 26" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s10b','Feb 26')">Gear check + pack</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s10b','Feb 26')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s10b','Feb 26')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div><div class="tl-day shoot" data-date="Feb 27"><div class="tl-day-header"><div class="tl-date">Feb 27</div><div class="tl-label">SHOOT</div></div><div class="tl-items" data-date="Feb 27"><div class="tl-item action" data-id="s11a" data-date="Feb 27" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s11a','Feb 27')">V1: EXT. BACKYARD 9–11AM</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s11a','Feb 27')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s11a','Feb 27')" title="Remove">✕</button>
-    </div></div><div class="tl-item action" data-id="s11b" data-date="Feb 27" draggable="true">
-    <div class="tl-item-text" onclick="toggleSchedItem('s11b','Feb 27')">V2: INT. STUDIO TBD</div>
-    <div class="tl-item-actions">
-      <button class="tl-item-edit" onclick="editSchedItem('s11b','Feb 27')" title="Edit">✎</button>
-      <button class="tl-item-del" onclick="deleteSchedItem('s11b','Feb 27')" title="Remove">✕</button>
-    </div></div><button class="tl-add-btn">+ Add item</button></div></div></div>
+    <div class="timeline" id="timeline-root"></div>
   </div>
 
   <div class="note-block" style="margin-top:20px">
@@ -1154,7 +963,7 @@ function checkPassword(){
   </div>
 
   <div class="inbox-drop" id="scout-drop" onclick="document.getElementById('scout-input').click()">
-    <input type="file" id="scout-input" accept="image/*,video/*" multiple="" onchange="handleScoutUpload(event)">
+    <input type="file" id="scout-input" accept="image/*,video/*" multiple onchange="handleScoutUpload(event)">
     <div style="font-size:20px;margin-bottom:6px">⊞</div>
     <div>Drop scout photos + videos here · Images analyzed by Claude Vision · Videos analyzed by Gemini</div>
     <div style="margin-top:4px;color:var(--text3);font-size:10px">EXIF metadata extracted automatically · Duplicates flagged · Full metadata card per image</div>
@@ -1175,7 +984,7 @@ function checkPassword(){
     </div>
     <div class="correction-box" id="correction-box" style="display:none">
       <div style="font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Corrections — describe what's wrong or missing</div>
-      <textarea id="correction-input" placeholder="e.g. &quot;The room is actually 18 feet wide not 14. There are two windows on the north wall, not one. The door opens inward.&quot;"></textarea>
+      <textarea id="correction-input" placeholder='e.g. "The room is actually 18 feet wide not 14. There are two windows on the north wall, not one. The door opens inward."'></textarea>
       <div style="margin-top:8px;display:flex;gap:8px">
         <button class="btn primary sm" onclick="redrawOverhead()">↺ Redraw with Corrections</button>
         <button class="btn sm" onclick="document.getElementById('correction-box').style.display='none'">Cancel</button>
@@ -1192,22 +1001,14 @@ function checkPassword(){
   <div class="panel-title">Crew Repository</div>
   <div class="panel-sub">All roles across all departments · click a name to open contact card · cycle state to track availability</div>
 
-  <div id="crew-dept-camera"><div class="section-title" style="margin-top: 0px;">📷 Camera</div><div class="crew-role-row"><div class="crew-role-label">Camera Operator</div><div class="crew-role-strip" id="strip-camera-Camera_Operator"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Camera Operator</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Camera Operator</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">1st AC / Focus Puller</div><div class="crew-role-strip" id="strip-camera-_st_AC___Focus_Puller"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>1st AC / Focus Puller</span></div></div><div class="crew-card-v3 is-unavailable" id="cv3-crew-tate">
-    <div class="crew-card-v3-role">1st AC / Focus Puller</div>
-    <div class="crew-card-v3-name" onclick="openContactCard('crew-tate')" title="Click to open contact card">Tate Becherer</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:4px">$200/day</div>
-    <button class="crew-state-btn unavailable" onclick="event.stopPropagation();cycleCrewState('crew-tate')">Unavailable</button></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>1st AC / Focus Puller</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">2nd AC</div><div class="crew-role-strip" id="strip-camera-_nd_AC"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>2nd AC</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>2nd AC</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">DIT</div><div class="crew-role-strip" id="strip-camera-DIT"><div class="crew-card-v3 is-hired" id="cv3-crew-daniel">
-    <div class="crew-card-v3-role">DIT</div>
-    <div class="crew-card-v3-name" onclick="openContactCard('crew-daniel')" title="Click to open contact card">Daniel Elder</div>
-    <div style="font-size:9px;color:var(--text3);margin-bottom:4px">$400/day</div>
-    <button class="crew-state-btn hired" onclick="event.stopPropagation();cycleCrewState('crew-daniel')">Hired ✓</button></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>DIT</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Utility</div><div class="crew-role-strip" id="strip-camera-Utility"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Utility</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Utility</span></div></div></div></div></div>
-  <div id="crew-dept-electric"><div class="section-title">⚡ Electric</div><div class="crew-role-row"><div class="crew-role-label">Gaffer</div><div class="crew-role-strip" id="strip-electric-Gaffer"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Gaffer</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Gaffer</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Best Boy Electric</div><div class="crew-role-strip" id="strip-electric-Best_Boy_Electric"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Best Boy Electric</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Best Boy Electric</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Juicer</div><div class="crew-role-strip" id="strip-electric-Juicer"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Juicer</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Juicer</span></div></div></div></div></div>
-  <div id="crew-dept-grip"><div class="section-title">🔧 Grip</div><div class="crew-role-row"><div class="crew-role-label">Key Grip</div><div class="crew-role-strip" id="strip-grip-Key_Grip"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Key Grip</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Key Grip</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Best Boy Grip</div><div class="crew-role-strip" id="strip-grip-Best_Boy_Grip"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Best Boy Grip</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Best Boy Grip</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Grip</div><div class="crew-role-strip" id="strip-grip-Grip"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Grip</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Grip</span></div></div></div></div></div>
+  <div id="crew-dept-camera"></div>
+  <div id="crew-dept-electric"></div>
+  <div id="crew-dept-grip"></div>
 
   <div style="border-top:1px solid var(--border);margin-top:8px;padding-top:16px">
     <div class="section-title" style="margin-top:0">Above the Line — Production Contacts</div>
     <div style="font-size:11px;color:var(--text3);margin-bottom:10px">Not your hires. Quick access + project history.</div>
-    <div id="crew-dept-production"><div class="section-title">Production Contacts</div><div class="crew-role-row"><div class="crew-role-label">Director</div><div class="crew-role-strip" id="strip-production-Director"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Director</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Director</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Producer / UPM</div><div class="crew-role-strip" id="strip-production-Producer___UPM"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Producer / UPM</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Producer / UPM</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Production Designer</div><div class="crew-role-strip" id="strip-production-Production_Designer"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Production Designer</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Production Designer</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">Writer</div><div class="crew-role-strip" id="strip-production-Writer"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>Writer</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>Writer</span></div></div></div></div><div class="crew-role-row"><div class="crew-role-label">AD</div><div class="crew-role-strip" id="strip-production-AD"><div class="crew-card-v3 is-open"><div class="crew-open-card"><span class="crew-open-plus">○</span><span class="crew-open-label">Open<br>AD</span></div></div><div class="crew-card-v3 is-open" style="opacity: 0.4;"><div class="crew-open-card"><span class="crew-open-plus" style="font-size:22px;color:var(--gold2)">+</span><span class="crew-open-label">Add to<br>AD</span></div></div></div></div></div>
+    <div id="crew-dept-production"></div>
   </div>
 
   <div class="page-instructions"><div class="page-instructions-toggle" onclick="toggleInstructions(this)"><span class="pi-chevron">›</span><span class="pi-label">How to use this page</span></div><div class="pi-body"><div class="pi-row"><div class="pi-key">Role rows</div><div class="pi-val">Three departments — Camera, Electric, Grip — each with horizontal role strips. Every role (1st AC, DIT, Gaffer, Key Grip, Steadicam Op, etc.) has its own row. Scroll horizontally if there are multiple people in a role.</div></div><div class="pi-row"><div class="pi-key">State badges</div><div class="pi-val">Each crew card has a colored border and state button: <strong>green = Hired</strong>, <strong>gold = Available</strong>, <strong>red = Unavailable</strong>. Click the state button to cycle Available → Unavailable → Available. Set to Hired via the contact card.</div></div><div class="pi-row"><div class="pi-key">Contact card</div><div class="pi-val">Click any crew card to open the full contact overlay: role, name, phone, email, day rate, status, notes. Call or email directly from the card. Set state to Hired here. Changes save to IndexedDB and persist across sessions.</div></div><div class="pi-row"><div class="pi-key">Documents</div><div class="pi-val">Each contact card has a Documents section at the bottom. Drag a file (inventory list, insurance cert, resume, contract) onto the drop zone or click Browse. Auto-labeled by filename keywords. Stored with the crew member in IndexedDB. Click to download, ✕ to remove.</div></div><div class="pi-row"><div class="pi-key">Hire → checklist toast</div><div class="pi-val">When you mark someone Hired, a toast appears: "[Name] hired as [Role] — mark checklist item done? ✓ Yes / Later." Clicking Yes checks the linked checklist item and resolves the flag. Later dismisses without touching the checklist.</div></div><div class="pi-row"><div class="pi-key">Open role flags</div><div class="pi-val">Any unfilled role automatically generates a red flag on the Overview. Hiring someone for that role resolves the flag immediately.</div></div><div class="pi-row"><div class="pi-key">Adding via AI</div><div class="pi-val">Paste an iOS contact card or speak naturally — "Add Marcus Webb as gaffer, $250/day, 323-555-0142." The AI extracts name, role, phone, email, rate, and proposes a crew add for your approval.</div></div><div class="pi-row"><div class="pi-key">VCF drag-drop</div><div class="pi-val">Drag a .vcf file from your Contacts app directly onto the AI command bar. It parses the contact and pre-fills the command — press Enter to route through AI and add to crew.</div></div></div></div>
@@ -1217,211 +1018,21 @@ function checkPassword(){
 <div class="panel" id="panel-vendors">
   <div class="panel-title">Vendors</div>
   <div class="panel-sub">Rental houses and service contacts · drag quote PDFs onto a card · click Edit for contact details</div>
-  <div id="vendor-list"><div class="vendor-card-v2" id="vc-vendor-lightstone">
-    <div class="vendor-card-header">
-      <div>
-        <div class="vendor-name">Lightstone Rentals</div>
-        <div style="font-size:11px;color:var(--text2);margin-top:2px">Ryan Beardsley</div>
-      </div>
-      <div style="display:flex;gap:6px;align-items:center">
-        
-        
-        <button class="vendor-edit-btn" onclick="openVendorCard('vendor-lightstone')">Edit</button>
-      </div>
-    </div>
-    <div class="vendor-coi-row">
-      <div class="vendor-coi-dot" style="background:var(--red)"></div>
-      <span style="font-size:11px;color:var(--red)">COI Needed</span>
-      <button class="btn sm" style="margin-left:8px" onclick="event.stopPropagation();cycleVendorCOI('vendor-lightstone')">Mark Submitted</button>
-    </div>
-    <div class="vendor-quotes-row" id="quotes-row-vendor-lightstone"><span style="font-size:9px;color:var(--text3)">No quotes attached</span></div>
-    <div class="vendor-drop-zone" id="drop-vendor-lightstone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleQuoteDrop(event,'vendor-lightstone')">
-      Drop quote PDF here
-      <input type="file" accept=".pdf,.jpg,.jpeg,.png" style="display:none" id="qfile-vendor-lightstone" onchange="handleQuoteFile(this,'vendor-lightstone')">
-      <button class="vendor-upload-btn" onclick="event.stopPropagation();document.getElementById('qfile-vendor-lightstone').click()">Browse</button>
-    </div>
-    <div style="font-size:10px;color:var(--text3);margin-top:8px;font-style:italic">Primary rental house · Alexa 35, lenses, grip, electric</div></div><div class="vendor-add-card"><span style="font-size:20px;color:var(--gold2)">+</span><span style="font-size:10px;color:var(--text3);letter-spacing:.5px">Add Vendor</span></div></div>
+  <div id="vendor-list"></div>
   <div class="page-instructions"><div class="page-instructions-toggle" onclick="toggleInstructions(this)"><span class="pi-chevron">›</span><span class="pi-label">How to use this page</span></div><div class="pi-body"><div class="pi-row"><div class="pi-key">Vendor cards</div><div class="pi-val">Each vendor shows company name, contact person, and COI status. Lightstone Rentals is pre-seeded with Ryan Beardsley. Click any card to open the full contact overlay.</div></div><div class="pi-row"><div class="pi-key">COI status</div><div class="pi-val">Three states, cycled by clicking the COI button on the card: <strong>Needed</strong> (red) → <strong>Submitted</strong> (amber) → <strong>Confirmed</strong> (green). Confirming Lightstone's COI also checks the linked checklist item and resolves the flag on the Overview.</div></div><div class="pi-row"><div class="pi-key">Quote attachments</div><div class="pi-val">Drag a PDF quote onto the drop zone inside any vendor's card, or click Browse. Quotes are auto-versioned (v1, v2, Final if the filename contains "final"). Each quote shows version label, filename, date, and dollar amount if detected. Click to download.</div></div><div class="pi-row"><div class="pi-key">Quotes on Gear page</div><div class="pi-val">All attached quotes also appear in the Quotes section at the bottom of the Gear page, organized by vendor as clickable cards. Same data, second view — no duplicate uploads needed.</div></div><div class="pi-row"><div class="pi-key">Adding vendors</div><div class="pi-val">Click the + Add Vendor card. Fill in company, contact, phone, email. Vendor appears in the Source dropdown on the Pull Sheet automatically.</div></div><div class="pi-row"><div class="pi-key">Vendor colors</div><div class="pi-val">Each vendor gets a persistent color in the Pull Sheet source dropdown. Luke's Truck is always green. Vendors are assigned colors in the order they were added (Lightstone = red, next = amber, etc.).</div></div></div></div>
 </div>
 <div class="panel" id="panel-gear">
   <div class="panel-title">Gear</div>
   <div class="panel-sub">Pull Sheet — what's going to set for this job · click any cell to edit · Source = where it's coming from</div>
 
-  <div id="pull-dept-camera"><div class="section-title" style="margin-top:0">📷 Camera</div><div style="overflow-x:auto;margin-bottom:8px">
-    <table class="pull-table" id="pull-table-camera">
-      <thead><tr>
-        <th style="width:28%">Item</th>
-        <th style="width:8%">Qty</th>
-        <th style="width:18%">Source</th>
-        <th style="width:12%">Priority</th>
-        <th style="width:9%">Video</th>
-        <th style="width:21%">Notes</th>
-        <th style="width:4%"></th>
-      </tr></thead>
-      <tbody id="pull-body-camera"><tr data-id="pull-alexa" class="pull-row" id="pull-row-pull-alexa">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-alexa" title="Click to edit">ARRI Alexa 35</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-alexa" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--red);font-size:9px"><option selected="">critical</option><option>high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-alexa" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-alexa" style="font-size:10px;color:var(--text3)">+ mags, batteries, cage, accessories</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-alexa')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-mercury" class="pull-row" id="pull-row-pull-mercury">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-mercury" title="Click to edit">Atlas Mercury Set (32/50/75)</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-mercury" style="text-align:center">1 set</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--red);font-size:9px"><option selected="">critical</option><option>high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-mercury" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-mercury" style="font-size:10px;color:var(--text3)">PL mount · verify 32/50/75 availability</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-mercury')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-703" class="pull-row" id="pull-row-pull-703">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-703" title="Click to edit">SmallHD 703</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-703" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--red);font-size:9px"><option selected="">critical</option><option>high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-703" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-703" style="font-size:10px;color:var(--text3)">Primary on-set monitor</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-703')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-diopter" class="pull-row" id="pull-row-pull-diopter">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-diopter" title="Click to edit">Diopter Set</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-diopter" style="text-align:center">1 set</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-diopter" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-diopter" style="font-size:10px;color:var(--text3)">Test with Mercury before rental lock</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-diopter')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-steadicam-mon" class="pull-row" id="pull-row-pull-steadicam-mon">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-steadicam-mon" title="Click to edit">Steadicam Monitor</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-steadicam-mon" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-steadicam-mon" style="text-align:center;font-size:10px">V1</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-steadicam-mon" style="font-size:10px;color:var(--text3)">Confirm if op provides on rig</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-steadicam-mon')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-ultraarm" class="pull-row" id="pull-row-pull-ultraarm">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-ultraarm" title="Click to edit">UltraLight Arm</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-ultraarm" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-ultraarm" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-ultraarm" style="font-size:10px;color:var(--text3)">With 703</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-ultraarm')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-comms" class="pull-row" id="pull-row-pull-comms">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-comms" title="Click to edit">Hollyland Comms</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-comms" style="text-align:center">6</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-comms" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-comms" style="font-size:10px;color:var(--text3)">Full small crew</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-comms')" title="Remove">✕</button></td>
-  </tr></tbody></table></div><button class="pull-add-btn" onclick="addPullItem('camera')">+ Add Camera Item</button></div>
-  <div id="pull-dept-electric"><div class="section-title" style="">⚡ Electric</div><div style="overflow-x:auto;margin-bottom:8px">
-    <table class="pull-table" id="pull-table-electric">
-      <thead><tr>
-        <th style="width:28%">Item</th>
-        <th style="width:8%">Qty</th>
-        <th style="width:18%">Source</th>
-        <th style="width:12%">Priority</th>
-        <th style="width:9%">Video</th>
-        <th style="width:21%">Notes</th>
-        <th style="width:4%"></th>
-      </tr></thead>
-      <tbody id="pull-body-electric"><tr data-id="pull-nanlux" class="pull-row" id="pull-row-pull-nanlux">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-nanlux" title="Click to edit">Nanlux 2400 (or 1200/900)</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-nanlux" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--text3)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option selected="">None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--red);font-size:9px"><option selected="">critical</option><option>high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-nanlux" style="text-align:center;font-size:10px">V1</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-nanlux" style="font-size:10px;color:var(--text3)">20A circuit · run at 80% if 2400</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-nanlux')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-litemat" class="pull-row" id="pull-row-pull-litemat">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-litemat" title="Click to edit">LiteMat 4</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-litemat" style="text-align:center">TBD</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-litemat" style="text-align:center;font-size:10px">V2</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-litemat" style="font-size:10px;color:var(--text3)">Qty TBD until V2 location locked</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-litemat')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-b7c" class="pull-row" id="pull-row-pull-b7c">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-b7c" title="Click to edit">Aperture B7c</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-b7c" style="text-align:center">3</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--text3);font-size:9px"><option>critical</option><option>high</option><option selected="">low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-b7c" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-b7c" style="font-size:10px;color:var(--text3)">App-controlled smart bulbs · in-frame practical only</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-b7c')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-mcpro" class="pull-row" id="pull-row-pull-mcpro">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-mcpro" title="Click to edit">Aperture MC Pro</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-mcpro" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--text3);font-size:9px"><option>critical</option><option>high</option><option selected="">low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-mcpro" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-mcpro" style="font-size:10px;color:var(--text3)">Practical accent / eye light</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-mcpro')" title="Remove">✕</button></td>
-  </tr></tbody></table></div><button class="pull-add-btn" onclick="addPullItem('electric')">+ Add Electric Item</button></div>
-  <div id="pull-dept-grip"><div class="section-title" style="">🔧 Grip</div><div style="overflow-x:auto;margin-bottom:8px">
-    <table class="pull-table" id="pull-table-grip">
-      <thead><tr>
-        <th style="width:28%">Item</th>
-        <th style="width:8%">Qty</th>
-        <th style="width:18%">Source</th>
-        <th style="width:12%">Priority</th>
-        <th style="width:9%">Video</th>
-        <th style="width:21%">Notes</th>
-        <th style="width:4%"></th>
-      </tr></thead>
-      <tbody id="pull-body-grip"><tr data-id="pull-steadicam" class="pull-row" id="pull-row-pull-steadicam">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-steadicam" title="Click to edit">Steadicam Rig</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-steadicam" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--red);font-size:9px"><option selected="">critical</option><option>high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-steadicam" style="text-align:center;font-size:10px">V1</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-steadicam" style="font-size:10px;color:var(--text3)">Operator separate hire</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-steadicam')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-talon" class="pull-row" id="pull-row-pull-talon">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-talon" title="Click to edit">Talon Jr/Zoom Head</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-talon" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-talon" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-talon" style="font-size:10px;color:var(--text3)">Static locked shots both videos</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-talon')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-cstand-own" class="pull-row" id="pull-row-pull-cstand-own">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-cstand-own" title="Click to edit">C-Stand</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-cstand-own" style="text-align:center">1</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-cstand-own" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-cstand-own" style="font-size:10px;color:var(--text3)">Owned</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-cstand-own')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-cstand-rent" class="pull-row" id="pull-row-pull-cstand-rent">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-cstand-rent" title="Click to edit">C-Stands</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-cstand-rent" style="text-align:center">2–3</td>
-    <td><select class="pull-source-select" style="color:var(--text2)"><option>Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-cstand-rent" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-cstand-rent" style="font-size:10px;color:var(--text3)">Rental · qty depends on final setup</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-cstand-rent')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-gels" class="pull-row" id="pull-row-pull-gels">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-gels" title="Click to edit">Gel Set</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-gels" style="text-align:center">1 box</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-gels" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-gels" style="font-size:10px;color:var(--text3)">¼ CTO on Nanlux V1 + creative use V2</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-gels')" title="Remove">✕</button></td>
-  </tr><tr data-id="pull-diffusion" class="pull-row" id="pull-row-pull-diffusion">
-    <td class="pull-cell-editable" data-field="item" data-id="pull-diffusion" title="Click to edit">Diffusion Set</td>
-    <td class="pull-cell-editable" data-field="qty" data-id="pull-diffusion" style="text-align:center">1 box</td>
-    <td><select class="pull-source-select" style="color:var(--green)"><option selected="">Luke's Truck</option><option>Lightstone Rentals</option><option>None</option><option>TBD</option><option>Other</option></select></td>
-    <td><select class="pull-priority-select" style="color:var(--amber);font-size:9px"><option>critical</option><option selected="">high</option><option>low</option></select></td>
-    <td class="pull-cell-editable" data-field="video" data-id="pull-diffusion" style="text-align:center;font-size:10px">Both</td>
-    <td class="pull-cell-editable" data-field="notes" data-id="pull-diffusion" style="font-size:10px;color:var(--text3)">Soften Nanlux if needed</td>
-    <td style="text-align:center"><button class="pull-del-btn" onclick="deletePullItem('pull-diffusion')" title="Remove">✕</button></td>
-  </tr></tbody></table></div><button class="pull-add-btn" onclick="addPullItem('grip')">+ Add Grip Item</button></div>
+  <div id="pull-dept-camera"></div>
+  <div id="pull-dept-electric"></div>
+  <div id="pull-dept-grip"></div>
 
   <div class="section-title">Quotes</div>
-  <div id="gear-quotes-section" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px"><div style="font-size:10px;color:var(--text3);font-style:italic;padding:8px 0">No quotes attached yet — attach PDFs to vendors on the Vendors page.</div></div>
+  <div id="gear-quotes-section" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+    <div style="font-size:10px;color:var(--text3);font-style:italic;padding:8px 0">No quotes attached yet — attach PDFs to vendors on the Vendors page.</div>
+  </div>
 
   <div class="page-instructions"><div class="page-instructions-toggle" onclick="toggleInstructions(this)"><span class="pi-chevron">›</span><span class="pi-label">How to use this page</span></div><div class="pi-body"><div class="pi-row"><div class="pi-key">Pull Sheet</div><div class="pi-val">Three department sections: Camera, Electric, Grip. This is the job-specific list — what's going to set for Feb 27, not a permanent inventory. Items are pre-loaded from your camera package and rental plan.</div></div><div class="pi-row"><div class="pi-key">Inline editing</div><div class="pi-val">Click any cell (Item name, Qty, Video, Notes) to edit it in place. Type, then press Enter or Tab to move to the next cell. Press Escape to cancel. All edits save to IndexedDB immediately.</div></div><div class="pi-row"><div class="pi-key">Source column</div><div class="pi-val">Dropdown per row populated from your vendor list — Luke's Truck, Lightstone, TBD, None, or any vendor you've added. Each vendor has a persistent color. Luke's Truck = green. Changing a source logs to the Decision Log.</div></div><div class="pi-row"><div class="pi-key">Priority column</div><div class="pi-val">Critical (red), High (amber), Low (gray). Rows sort by priority within each department section. Affects flag visibility for gear-related issues.</div></div><div class="pi-row"><div class="pi-key">Add / remove rows</div><div class="pi-val">Click <strong>+ Add [Dept] Item</strong> at the bottom of any section — opens a new row immediately in edit mode. Click ✕ on any row to delete it. Both actions log to the Decision Log.</div></div><div class="pi-row"><div class="pi-key">Quotes section</div><div class="pi-val">Below the pull sheet. Shows all PDFs attached to vendor cards, grouped by vendor — company name, version label, date, amount. Click any quote card to download the file. Attach quotes on the Vendors page; they appear here automatically.</div></div><div class="pi-row"><div class="pi-key">AI command</div><div class="pi-val">"Add a Dana Dolly to grip, source Lightstone, priority high" — approve the proposed change and it lands directly in the Grip section with the right source and priority set.</div></div></div></div>
 </div>
@@ -1470,7 +1081,7 @@ function checkPassword(){
   <div class="panel-title">Project Inbox</div>
   <div class="panel-sub">Drop any project material — photos, PDFs, decks, reference videos</div>
   <div class="inbox-drop" onclick="document.getElementById('inbox-input').click()">
-    <input type="file" id="inbox-input" accept="image/*,video/*,.pdf,.txt" multiple="" onchange="handleInboxUpload(event)">
+    <input type="file" id="inbox-input" accept="image/*,video/*,.pdf,.txt" multiple onchange="handleInboxUpload(event)">
     <div style="font-size:20px;margin-bottom:6px">⬡</div>
     <div>Drop files here — scout photos, director references, quotes, decks</div>
     <div style="margin-top:4px;color:var(--text3);font-size:10px">Images analyzed by Claude Vision · Videos logged · PDFs logged for next version</div>
@@ -1532,18 +1143,21 @@ function checkPassword(){
 
   <div class="section-title">Status</div>
   <div class="grid2">
-    <div class="card"><div class="card-title">Anthropic</div><div class="card-val" style="font-size: 16px; color: var(--green);" id="val-anthropic-status">Set ✓</div><div class="card-sub">Claude Vision + AI Command</div></div>
-    <div class="card"><div class="card-title">Gemini</div><div class="card-val" style="font-size: 16px; color: var(--green);" id="val-gemini-status">Set ✓</div><div class="card-sub">Video analysis</div></div>
+    <div class="card"><div class="card-title">Anthropic</div><div class="card-val" style="font-size:16px" id="val-anthropic-status">Not set</div><div class="card-sub">Claude Vision + AI Command</div></div>
+    <div class="card"><div class="card-title">Gemini</div><div class="card-val" style="font-size:16px" id="val-gemini-status">Not set</div><div class="card-sub">Video analysis</div></div>
   </div>
 
   <div class="page-instructions"><div class="page-instructions-toggle" onclick="toggleInstructions(this)"><span class="pi-chevron">›</span><span class="pi-label">How to use this page</span></div><div class="pi-body"><div class="pi-row"><div class="pi-key">Anthropic key</div><div class="pi-val">Powers the AI command bar (plain-language updates to crew, gear, schedule) and Claude Vision (photo analysis in Scout). Get yours at console.anthropic.com → API Keys. Paste it in, click Save — you'll see "✓ Saved" confirmation. The key persists to localStorage and loads automatically on every future session.</div></div><div class="pi-row"><div class="pi-key">Gemini key</div><div class="pi-val">Powers video analysis in Scout — Gemini 1.5 Pro watches your full scout video clips and returns a scene breakdown. Get a free key at aistudio.google.com. Same save behavior as the Anthropic key.</div></div><div class="pi-row"><div class="pi-key">Test buttons</div><div class="pi-val">Click Test next to either key to verify it's working. The status card below updates to show Set ✓ in green when active, or an error if the key is invalid or has no billing.</div></div><div class="pi-row"><div class="pi-key">Key security</div><div class="pi-val">Keys are stored in your browser's localStorage only — never sent anywhere except directly to Anthropic and Google's APIs. No server, no account, no third party. The file runs entirely in your browser.</div></div></div></div>
 </div>
 
 <!-- COMMAND BAR -->
-<div class="command-bar" id="command-bar" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleCommandBarDrop(event)">
+<div class="command-bar" id="command-bar"
+  ondragover="event.preventDefault();this.classList.add('drag-over')"
+  ondragleave="this.classList.remove('drag-over')"
+  ondrop="handleCommandBarDrop(event)">
   <div class="command-bar-top">
     <span class="command-label">⬡ AI Command</span>
-    <input class="command-input" id="cmd-input" placeholder="Speak, type, or drag a .vcf contact card here · &quot;Add Sarah Kim, 1st AC, 323-555-0142, sarah@email.com&quot;" onkeydown="if(event.key==='Enter')sendCommand()">
+    <input class="command-input" id="cmd-input" placeholder='Speak, type, or drag a .vcf contact card here · "Add Sarah Kim, 1st AC, 323-555-0142, sarah@email.com"' onkeydown="if(event.key==='Enter')sendCommand()">
     <button class="cmd-btn" id="cmd-btn" onclick="sendCommand()">Send →</button>
     <span class="cmd-hint">Enter · drag .vcf · changes logged on commit</span>
   </div>
@@ -4260,6 +3874,5 @@ initFlags().then(()=>{
 });
 loadPersistedScout();
 </script>
-
-
-</div></body></html>
+</body>
+</html>
