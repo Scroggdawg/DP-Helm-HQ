@@ -2197,11 +2197,11 @@ function openDB(){
 }
 
 function dbSave(store,obj){
-  if(!db) return;
+  if(!db){ console.warn('dbSave called before DB open — store:',store); return; }
   try{
     const tx=db.transaction(store,'readwrite');
     tx.objectStore(store).put(obj);
-  }catch(e){console.warn('DB save error',e);}
+  }catch(e){console.warn('DB save error',store,e);}
 }
 
 function dbDelete(store,key){
@@ -3963,8 +3963,10 @@ function clearPreview(){pendingChanges=[];document.getElementById('cmd-preview')
 
 function toggleInstructions(el){el.closest('.page-instructions').classList.toggle('open');}
 
-// Init order matters: flags first so checklist can reference them
-initFlags().then(()=>{
+// Init order: open DB first, then flags, then everything else
+openDB().then(()=>{
+  return initFlags();
+}).then(()=>{
   initChecklist();
   initCrew();
   initVendors();
@@ -3973,6 +3975,19 @@ initFlags().then(()=>{
   initSchedule();
   initApiKeys();
   loadLogEntries();
+}).catch(e=>{
+  console.error('DB init failed:', e);
+  // Fallback: run without persistence
+  initFlags().then(()=>{
+    initChecklist();
+    initCrew();
+    initVendors();
+    initPullSheet();
+    renderGearQuotes();
+    initSchedule();
+    initApiKeys();
+    loadLogEntries();
+  });
 });
 loadPersistedScout();
 </script>
