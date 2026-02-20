@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DP Helm HQ</title>
+<title>DP Helm — Captain's Log</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -506,7 +506,7 @@ label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t
 <!-- PASSWORD GATE -->
 <div id="pw-gate" style="position:fixed;inset:0;background:#0a0a0a;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0">
   <div style="text-align:center;max-width:360px;width:90%">
-    <div style="font-family:'DM Serif Display',Georgia,serif;font-size:28px;color:#c9a84c;margin-bottom:6px;letter-spacing:1px">DP Helm HQ</div>
+    <div style="font-family:'DM Serif Display',Georgia,serif;font-size:28px;color:#c9a84c;margin-bottom:6px;letter-spacing:1px">DP Helm — Captain's Log</div>
     <div style="font-size:11px;color:#666;letter-spacing:2px;text-transform:uppercase;margin-bottom:40px">Guitar + Animator POC</div>
     <input id="pw-input" type="password" placeholder="Password" 
       style="width:100%;background:#111;border:1px solid #333;color:#e8e8e8;font-family:monospace;font-size:14px;padding:12px 16px;outline:none;box-sizing:border-box;letter-spacing:2px;margin-bottom:10px"
@@ -523,14 +523,14 @@ label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t
 <script>
 (function(){
   // Check if already authenticated this session
-  try{ if(sessionStorage.getItem('dp_helm_auth')==='1'){ document.getElementById('pw-gate').style.display='none'; } }catch(e){}
+  try{ if(sessionStorage.getItem('captains_log_auth')==='1'){ document.getElementById('pw-gate').style.display='none'; } }catch(e){}
 })();
 function checkPassword(){
   const val = document.getElementById('pw-input').value;
   // Password stored as a simple hash check — change 'helmready' to your preferred password
   const PW = 'helmready';
   if(val === PW){
-    try{ sessionStorage.setItem('dp_helm_auth','1'); }catch(e){}
+    try{ sessionStorage.setItem('captains_log_auth','1'); }catch(e){}
     const gate = document.getElementById('pw-gate');
     gate.style.transition = 'opacity .4s';
     gate.style.opacity = '0';
@@ -633,11 +633,14 @@ function checkPassword(){
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span class="topbar-logo">DP Helm HQ</span>
+  <span class="topbar-logo">DP Helm — Captain's Log</span>
   <span class="topbar-sep">|</span>
   <span class="topbar-project">Guitar + Animator POC</span>
   <div class="topbar-right">
-    <button onclick="downloadApp()" style="background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:var(--font-m);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--gold2)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'" title="Download this file">↓ Download</button>
+    <a href="dp-helm-captains-log-v1.html" download="dp-helm-captains-log-v1.html" style="background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:var(--font-m);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center" onmouseover="this.style.borderColor='var(--gold2)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'" title="Download this HTML file">↓ HTML</a>
+    <button onclick="exportProject()" style="background:transparent;border:1px solid var(--green);color:var(--green);font-family:var(--font-m);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s" onmouseover="this.style.background='rgba(74,187,99,.1)'" onmouseout="this.style.background='transparent'" title="Export all project data to JSON backup">↓ Data</button>
+    <button onclick="document.getElementById('import-file-input').click()" style="background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:var(--font-m);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;transition:all .15s" onmouseover="this.style.borderColor='var(--gold2)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text3)'" title="Restore from a previous export">↑ Import Data</button>
+    <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="importProject(this.files[0])">
     <span class="badge" style="border-color:var(--border2);color:var(--text3)">Shoot: Feb 27</span>
     <span class="badge live" id="topbar-daysout">— days</span>
     <span class="badge warn" id="topbar-flag1">1st AC Open</span>
@@ -1177,7 +1180,7 @@ function checkPassword(){
 <script>
 const API_KEY = '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';
 let API_KEY_LIVE = (()=>{ try{ return localStorage.getItem('apiKey_anthropic')||API_KEY; }catch(e){ return API_KEY; } })();
-const PROJECT_CONTEXT = `You are the AI engine inside DP Helm HQ, a cinematographer's prep tool.
+const PROJECT_CONTEXT = `You are the AI engine inside DP Helm — Captain's Log, a cinematographer's prep tool.
 
 Project: Two separate videos (not intercut) — POC for feature.
 SCENE 1 "Performance Scene" EXT. BACKYARD — DAY: Guitarist, Steadicam pull-out strings→world, dawn-feel, 9-11AM LA.
@@ -3789,12 +3792,111 @@ function downloadApp(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'dp-helm-hq-v21.html';
+  a.download = 'dp-helm-captains-log-v21.html';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  logDecision('System', 'App downloaded as dp-helm-hq-v21.html');
+  logDecision('System', 'App downloaded as dp-helm-captains-log-v21.html');
+}
+
+
+// ============================================================
+// EXPORT / IMPORT — full project data backup and restore
+// ============================================================
+
+async function exportProject(){
+  try{
+    const date = new Date().toISOString().slice(0,10);
+    const exportData = {
+      version:  'dp-helm-captains-log-v1',
+      exported: new Date().toISOString(),
+      project:  'Guitar + Animator POC',
+      checklist:   (function(){ try{ return JSON.parse(localStorage.getItem('checklist_state')||'{}'); }catch(e){ return {}; } })(),
+      schedule:    (function(){ try{ return JSON.parse(localStorage.getItem('scheduleStore')||'null'); }catch(e){ return null; } })(),
+      decisionLog: (function(){ try{ return JSON.parse(localStorage.getItem('decision_log_v1')||'[]'); }catch(e){ return []; } })(),
+      apiKeys: {
+        anthropic: (function(){ try{ return localStorage.getItem('apiKey_anthropic')||''; }catch(e){ return ''; } })(),
+        gemini:    (function(){ try{ return localStorage.getItem('apiKey_gemini')||''; }catch(e){ return ''; } })(),
+      },
+      crew:    Object.values(crewStore||{}),
+      vendors: Object.values(vendorStore||{}),
+      pull:    Object.values(pullStore||{}),
+      flags:   Object.entries(flagStore||{}).map(function(e){ return {id:e[0], resolved:e[1].resolved}; }),
+    };
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'captains-log-backup-' + date + '.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    logDecision('System', 'Project exported: captains-log-backup-' + date + '.json');
+    showToast('Project data exported. Keep this file safe as your backup.');
+  }catch(e){
+    alert('Export failed: ' + e.message);
+  }
+}
+
+function importProject(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    try{
+      const data = JSON.parse(ev.target.result);
+      if(!data.version || data.version.indexOf('dp-helm') < 0){
+        alert('This does not appear to be a valid backup file.');
+        return;
+      }
+      const exportedAt = data.exported ? new Date(data.exported).toLocaleString() : 'unknown date';
+      if(!window.confirm('Restore backup from ' + exportedAt + '?\n\nThis will replace all current crew, vendors, gear, schedule, checklist, and log data. This cannot be undone.')){
+        return;
+      }
+      // Restore localStorage
+      try{ if(data.checklist)   localStorage.setItem('checklist_state',  JSON.stringify(data.checklist)); }catch(e){}
+      try{ if(data.schedule)    localStorage.setItem('scheduleStore',     JSON.stringify(data.schedule)); }catch(e){}
+      try{ if(data.decisionLog) localStorage.setItem('decision_log_v1',   JSON.stringify(data.decisionLog)); }catch(e){}
+      try{ if(data.apiKeys && data.apiKeys.anthropic) localStorage.setItem('apiKey_anthropic', data.apiKeys.anthropic); }catch(e){}
+      try{ if(data.apiKeys && data.apiKeys.gemini)    localStorage.setItem('apiKey_gemini',    data.apiKeys.gemini); }catch(e){}
+      // Restore IndexedDB stores
+      if(data.crew && data.crew.length){
+        data.crew.forEach(function(m){ crewStore[m.id]=m; crewDBSave(m); });
+      }
+      if(data.vendors && data.vendors.length){
+        data.vendors.forEach(function(v){ vendorStore[v.id]=v; dbSave('vendors',v); });
+      }
+      if(data.pull && data.pull.length){
+        data.pull.forEach(function(p){ pullStore[p.id]=p; pullDBSave(p); });
+      }
+      if(data.flags && data.flags.length){
+        data.flags.forEach(function(f){ if(flagStore[f.id]) flagStore[f.id].resolved=f.resolved; });
+        saveFlags();
+      }
+      // Re-render all panels
+      renderAllCrew();
+      renderAllVendors();
+      renderAllPull();
+      renderGearQuotes();
+      renderTimeline();
+      renderFlags();
+      initChecklist();
+      logDecision('System', 'Project restored from backup: ' + file.name);
+      showToast('Project restored from backup. All data loaded.');
+    }catch(e){
+      alert('Import failed. File may be corrupted.\n' + e.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function showToast(msg, color){
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--s2);border:1px solid ' + (color||'var(--green)') + ';color:' + (color||'var(--green)') + ';font-family:var(--font-m);font-size:11px;letter-spacing:.5px;padding:10px 20px;z-index:9998;pointer-events:none;white-space:nowrap';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.remove(); }, 4000);
 }
 
 // AI COMMAND
